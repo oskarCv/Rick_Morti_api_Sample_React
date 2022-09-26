@@ -1,28 +1,12 @@
-import { useEffect, useState } from "react";
-import {getCharacters} from "./service/service";
+import CharacterList from "./components/CharacterList";
+import Character from "./components/Character";
+
 function App() {
-  const [characters, setCharacters] = useState([]);
-  useEffect(()=>{
-    const fetchChracterData = async () => {
-      const response = await getCharacters();
-      setCharacters(response.data.results);
-      console.log('ocv response -> ', response.data.results);
-    }
-    fetchChracterData();
-  },[]);
+
   return (
     <div>
       <h1>Rick and Morty</h1>
-      {
-        characters.map((character) => {
-          return (
-            <div key={character.id}>
-              <h2>{character.name}</h2>
-              <img src={character.image} alt={character.name} />
-            </div>
-          );
-        })
-      }
+      <CharacterList />
     </div>
   );
 }
