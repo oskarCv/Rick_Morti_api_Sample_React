@@ -8,16 +8,17 @@ function CharacterList() {
     const fetchChracterData = async () => {
       const response = await getCharacters();
       setCharacters(response.data.results);
-      console.log('ocv response -> ', response.data.results);
     }
     fetchChracterData();
   },[]);
   return (
-    <div>
+    <div className="container bg-danger">
         {
         characters.map((character) => {
           return (
-            <Character key={character.id} character={character}/>
+            <div className="col-md-4" key={character.id}>
+                <Character character={character}/>
+            </div>
           );
         })
       }
